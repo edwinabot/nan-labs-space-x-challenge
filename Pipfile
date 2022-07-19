@@ -11,6 +11,7 @@ django-rq = "*"
 [dev-packages]
 black = "*"
 pytest = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.9.13"
