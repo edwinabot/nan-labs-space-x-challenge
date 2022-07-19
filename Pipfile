@@ -12,6 +12,7 @@ django-rq = "*"
 black = "*"
 pytest = "*"
 pylint = "*"
+pylint-django = "*"
 
 [requires]
 python_version = "3.9.13"
