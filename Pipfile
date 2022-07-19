@@ -16,3 +16,6 @@ pylint-django = "*"
 
 [requires]
 python_version = "3.9.13"
+
+[pipenv]
+allow_prereleases = true
