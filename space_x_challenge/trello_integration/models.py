@@ -4,10 +4,13 @@ from django.db import models
 
 
 class Task(models.Model):
-    CATEGORIES = (("MA", "Maintenance"), ("RE", "Research"), ("TE", "Test"))
+    class TaskCategories(models.TextChoices):
+        MAINTENANCE = ("MA", "Maintenance")
+        RESEARCH = ("RE", "Research")
+        TEST = ("TE", "Test")
 
     title = models.CharField(max_length=144)
-    category = models.CharField(choices=CATEGORIES, max_length=2)
+    category = models.CharField(choices=TaskCategories.choices, max_length=2)
 
 
 class Issue(models.Model):
