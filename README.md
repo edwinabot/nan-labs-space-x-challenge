@@ -34,7 +34,14 @@ I decided to base my solution on Django and its ecosystem for this challenge. Co
 To run this project, you'll need to install Docker and Docker Compose. Also, you'll need to set the `.env` file following the `.env.example` file at the root of this project. If you have that ready, you can run the project by executing the following:
 
 ```bash
-$ docker compose up
+$ docker compose up -d
+$ docker compose run api python manage.py migrate
+```
+
+To run the tests you can execute:
+
+```bash
+$ docker compose run api python manage.py test --noinput trello_integration
 ```
 
 Also, you can test the API with the Postman collections that I included in this repository in the `postman-collections` directory. You can import these in your Postman and play with them.
@@ -59,7 +66,8 @@ API tests in `test_issue_dispatcher.py` could use some Fuzz Testing to look for 
 ### On Production Readiness
 
 This implementation, to be production ready, requires at least the following:
-Authentication and Authorization, this API does not implement any right now. It could be helpful to use JWT tokens as a first solution.
-Remove secrets from `settings.py` and put them in safe storage, such as AWS Secrets Manager.
-Debug mode is on, it must be set to False in the prod environment.
-It needs a CD pipeline to deploy to different environments, such as staging and production.
+
+* Authentication and Authorization, this API does not implement any right now. It could be helpful to use JWT tokens as a first solution.
+* Remove secrets from `settings.py` and put them in safe storage, such as AWS Secrets Manager.
+* Debug mode is on, it must be set to False in the prod environment.
+* It needs a CD pipeline to deploy to different environments, such as staging and production.
