@@ -14,6 +14,12 @@ services:
       REDIS_HOST: redis
       TRELLO_KEY: ${TRELLO_KEY}
       TRELLO_TOKEN: ${TRELLO_TOKEN}
+      BOARD_ID: ${BOARD_ID}
+      TODO_LIST_ID: ${TODO_LIST_ID}
+      RESEARCH_LABEL_ID: ${RESEARCH_LABEL_ID}
+      TEST_LABEL_ID: ${TEST_LABEL_ID}
+      MAINTENANCE_LABEL_ID: ${MAINTENANCE_LABEL_ID}
+      BUG_LEVEL_ID: ${BUG_LEVEL_ID}
 
   worker:
     build: .
@@ -26,7 +32,12 @@ services:
       REDIS_HOST: redis
       TRELLO_KEY: ${TRELLO_KEY}
       TRELLO_TOKEN: ${TRELLO_TOKEN}
-
+      BOARD_ID: ${BOARD_ID}
+      TODO_LIST_ID: ${TODO_LIST_ID}
+      RESEARCH_LABEL_ID: ${RESEARCH_LABEL_ID}
+      TEST_LABEL_ID: ${TEST_LABEL_ID}
+      MAINTENANCE_LABEL_ID: ${MAINTENANCE_LABEL_ID}
+      BUG_LEVEL_ID: ${BUG_LEVEL_ID}
 
   redis:
     image: "redis:7.0.4-bullseye"

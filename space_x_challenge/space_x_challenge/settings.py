@@ -141,7 +141,7 @@ TRELLO_CONF = {
     "key": os.getenv("TRELLO_KEY"),
     "token": os.getenv("TRELLO_TOKEN"),
     "board_id": os.getenv("BOARD_ID", "5c964efa007d068f5d70116c"),
-    "todo_list_id": os.getenv("BOARD_ID", "5c964f089b7c0644b67bcd16"),
+    "todo_list_id": os.getenv("TODO_LIST_ID", "5c964f089b7c0644b67bcd16"),
     "research_label_id": os.getenv("RESEARCH_LABEL_ID", "62d7f8e8ed2bd4296fc93a92"),
     "test_label_id": os.getenv("TEST_LABEL_ID", "62d7f8ef7069b059fbabcb83"),
     "maintenance_label_id": os.getenv(
