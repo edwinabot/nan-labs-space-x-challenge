@@ -1,6 +1,32 @@
 version: '3.8'
 
 services:
+  api:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - database
+    environment:
+      - POSTGRES_HOST=database
+      - REDIS_HOST=redis
+      - TRELLO_KEY=${TRELLO_KEY}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+
+  worker:
+    build: .
+    command: python manage.py rqworker
+    depends_on:
+      - redis
+      - database
+    environment:
+      - POSTGRES_HOST=database
+      - REDIS_HOST=redis
+      - TRELLO_KEY=${TRELLO_KEY}
+      - TRELLO_TOKEN=${TRELLO_TOKEN}
+
 
   redis:
     image: "redis:7.0.4-bullseye"
