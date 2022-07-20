@@ -10,10 +10,10 @@ services:
       - redis
       - database
     environment:
-      - POSTGRES_HOST=database
-      - REDIS_HOST=redis
-      - TRELLO_KEY=${TRELLO_KEY}
-      - TRELLO_TOKEN=${TRELLO_TOKEN}
+      POSTGRES_HOST: database
+      REDIS_HOST: redis
+      TRELLO_KEY: ${TRELLO_KEY}
+      TRELLO_TOKEN: ${TRELLO_TOKEN}
 
   worker:
     build: .
@@ -22,10 +22,10 @@ services:
       - redis
       - database
     environment:
-      - POSTGRES_HOST=database
-      - REDIS_HOST=redis
-      - TRELLO_KEY=${TRELLO_KEY}
-      - TRELLO_TOKEN=${TRELLO_TOKEN}
+      POSTGRES_HOST: database
+      REDIS_HOST: redis
+      TRELLO_KEY: ${TRELLO_KEY}
+      TRELLO_TOKEN: ${TRELLO_TOKEN}
 
 
   redis:
