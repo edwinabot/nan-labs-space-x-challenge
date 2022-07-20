@@ -100,4 +100,16 @@ def send_issue(trello_client_conf: dict, instance: Issue):
 
 
 def send_task(trello_client_conf: dict, instance: Task):
-    raise NotImplementedError
+    client = TrelloClient(TrelloConf(**trello_client_conf))
+    payload = {"name": instance.title, "idList": client.conf.todo_list_id, "pos": "top"}
+    if instance.category == Task.TaskCategories.MAINTENANCE:
+        label_id = client.conf.maintenance_label_id
+    elif instance.category == Task.TaskCategories.TEST:
+        label_id = client.conf.test_label_id
+    else:
+        label_id = client.conf.research_label_id
+    payload["idLabels"] = [
+        label_id,
+    ]
+    result = client.post_card(payload)
+    print(f'Created Task {result["shortUrl"]}')
