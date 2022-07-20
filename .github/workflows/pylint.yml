@@ -24,5 +24,7 @@ jobs:
         pipenv requirements --dev > requirements.txt
         pip install -r requirements.txt
     - name: Analysing the code with pylint
+      env:
+        DJANGO_SETTINGS_MODULE: space_x_challenge.settings
       run: |
-        DJANGO_SETTINGS_MODULE=space_x_challenge.settings pylint $(git ls-files '*.py')
+        pylint $(git ls-files '*.py')
