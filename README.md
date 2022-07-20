@@ -48,6 +48,8 @@ I found that we can register callbacks with the Trello API to know about the act
 I also thought about storing Trello configurations. Different groups of people could utilize this system with different Trello Boards and accounts, and that would require keeping more user secrets in the database. So, encryption will be necessary for those fields, especially the Trello Token.
 
 
+I could also have implemented a Django Command in order to retrieve all the requirements, or create them for the Trello Board. Right now, it is a very manual, error-prone process.
+
 ### On test coverage
 
 Integration testing with Trello is lacking. Right now, the `test_trello_jobs.py` has almost no validations; test cases act as executors for the different jobs. At the very least, these tests prove the happy path and that the configuration for Trello is working.
