@@ -82,7 +82,7 @@ DATABASES = {
         "NAME": "space_x_challenge",
         "USER": "elon",
         "PASSWORD": "musk",
-        "HOST": "localhost",
+        "HOST": os.getenv("POSTGRES_HOST", "localhost"),
         "PORT": "5432",
     }
 }
@@ -92,7 +92,9 @@ if (
 ):  # Covers regular testing and django-coverage
     DATABASES["default"] = {"ENGINE": "django.db.backends.sqlite3"}
 
-RQ_QUEUES = {"default": {"HOST": "localhost", "PORT": 6379, "DB": 0}}
+RQ_QUEUES = {
+    "default": {"HOST": os.getenv("REDIS_HOST", "localhost"), "PORT": 6379, "DB": 0}
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -139,9 +141,11 @@ TRELLO_CONF = {
     "key": os.getenv("TRELLO_KEY"),
     "token": os.getenv("TRELLO_TOKEN"),
     "board_id": os.getenv("BOARD_ID", "5c964efa007d068f5d70116c"),
-    "todo_list_id": os.getenv("BOARD_ID", "5c964f089b7c0644b67bcd16"),
+    "todo_list_id": os.getenv("TODO_LIST_ID", "5c964f089b7c0644b67bcd16"),
     "research_label_id": os.getenv("RESEARCH_LABEL_ID", "62d7f8e8ed2bd4296fc93a92"),
     "test_label_id": os.getenv("TEST_LABEL_ID", "62d7f8ef7069b059fbabcb83"),
-    "maintenance_label_id": os.getenv("MAINTENANCE_LABEL_ID", "62d7f9025e0a2576685ab70e"),
-    "bug_label_id": os.getenv("BUG_LEVEL_ID", "62d82af0ae4ee51caf8bb105")
+    "maintenance_label_id": os.getenv(
+        "MAINTENANCE_LABEL_ID", "62d7f9025e0a2576685ab70e"
+    ),
+    "bug_label_id": os.getenv("BUG_LEVEL_ID", "62d82af0ae4ee51caf8bb105"),
 }

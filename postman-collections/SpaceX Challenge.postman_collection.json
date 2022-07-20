@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "9e970a84-3ce3-4204-bbe9-5df4246e368f",
+		"name": "SpaceX Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post a Bug",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"bug\",\r\n    \"description\": \"A very cool bug description\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/issues/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"issues",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post an Issue",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"issue\",\r\n    \"title\": \"As Elon Musk, I would like to be able of deploying Twitter trolls\",\r\n    \"description\": \"Given that we spend a lot of time creating this, we need an automated way of doing it\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/issues/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"issues",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Maintenance Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"task\",\r\n    \"category\": \"Maintenance\",\r\n    \"title\": \"Make sure that batteries are charged\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/issues/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"issues",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Research Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"task\",\r\n    \"category\": \"Research\",\r\n    \"title\": \"Investigate the disturbances in the Warp Core\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/issues/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"issues",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Test Task",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"task\",\r\n    \"category\": \"Research\",\r\n    \"title\": \"Investigate the disturbances in the Warp Core\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/issues/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"issues",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

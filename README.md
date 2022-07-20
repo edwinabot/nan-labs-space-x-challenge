@@ -26,3 +26,38 @@ Code must be uploaded in a git repository (preferably GitHub).
 We need instructions on how to execute the application.
 
 Good luck, have fun!
+
+## Edwin's notes
+
+I decided to base my solution on Django and its ecosystem for this challenge. Combined Django, Django REST Framework, and Django RQ. The reason is that Django allows for speedy prototyping and has decent performance should this grow. My strategy was to focus on rapid prototyping and testability, so I decided to build CI immediately and try to stick to TDD as much as possible. So you'll see GitHub Actions in place and several tests with and without mocks. As the implementation required, I Dockerized the entire solution to integrate with PostgreSQL and Redis.
+
+To run this project, you'll need to install Docker and Docker Compose. Also, you'll need to set the `.env` file following the `.env.example` file at the root of this project. If you have that ready, you can run the project by executing the following:
+
+```bash
+$ docker compose up
+```
+
+Also, you can test the API with the Postman collections that I included in this repository in the `postman-collections` directory. You can import these in your Postman and play with them.
+
+You have to set your To-Do Trello board with the expected Labels, and you'll need to retrieve that data; I've set up a Postman collection that you can utilize to retrieve them from the Trello API; a note about this process can be read in the Missing Features section.
+
+### Missing Features
+
+I found that we can register callbacks with the Trello API to know about the activity of the cards. It could be helpful to implement some feature that updates the Bugs, Issues, and Tasks with valuable info.
+
+I also thought about storing Trello configurations. Different groups of people could utilize this system with different Trello Boards and accounts, and that would require keeping more user secrets in the database. So, encryption will be necessary for those fields, especially the Trello Token.
+
+
+### On test coverage
+
+Integration testing with Trello is lacking. Right now, the `test_trello_jobs.py` has almost no validations; test cases act as executors for the different jobs. At the very least, these tests prove the happy path and that the configuration for Trello is working.
+
+API tests in `test_issue_dispatcher.py` could use some Fuzz Testing to look for edge cases derived from unexpected inputs: weird titles and descriptions.
+
+### On Production Readiness
+
+This implementation, to be production ready, requires at least the following:
+Authentication and Authorization, this API does not implement any right now. It could be helpful to use JWT tokens as a first solution.
+Remove secrets from `settings.py` and put them in safe storage, such as AWS Secrets Manager.
+Debug mode is on, it must be set to False in the prod environment.
+It needs a CD pipeline to deploy to different environments, such as staging and production.
