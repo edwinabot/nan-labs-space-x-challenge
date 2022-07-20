@@ -14,6 +14,10 @@ class TrelloJobs:
     default_queue = django_rq.get_queue("default")
 
     def create_trello_card(self, instance: Union[Bug, Task, Issue]):
+        """
+        Creates a Trello Card based on the instance argument,
+        it might a Bug, an Issue, or a Task
+        """
         handler = self._get_task_handler(type(instance))
         self.default_queue.enqueue(
             handler, trello_client_conf=TRELLO_CONF, instance=instance
@@ -68,6 +72,9 @@ class TrelloClient:
 
 
 def send_bug(trello_client_conf: dict, instance: Bug):
+    """
+    Posts a bug: This represents a problem that needs fixing.
+    """
     client = TrelloClient(TrelloConf(**trello_client_conf))
     members = client.get_board_members()
     random_member = random.choices(members)[0]
@@ -88,6 +95,9 @@ def send_bug(trello_client_conf: dict, instance: Bug):
 
 
 def send_issue(trello_client_conf: dict, instance: Issue):
+    """
+    Posts an issue: This represents a business feature that needs implementation.
+    """
     client = TrelloClient(TrelloConf(**trello_client_conf))
     payload = {
         "name": instance.title,
@@ -100,6 +110,9 @@ def send_issue(trello_client_conf: dict, instance: Issue):
 
 
 def send_task(trello_client_conf: dict, instance: Task):
+    """
+    Posts a task: This represents some manual work that needs to be done.
+    """
     client = TrelloClient(TrelloConf(**trello_client_conf))
     payload = {"name": instance.title, "idList": client.conf.todo_list_id, "pos": "top"}
     if instance.category == Task.TaskCategories.MAINTENANCE:
