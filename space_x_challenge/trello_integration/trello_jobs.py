@@ -49,9 +49,9 @@ class TrelloConf:
 class TrelloClient:
     def __init__(self, trello_conf: TrelloConf) -> None:
         self.conf = trello_conf
-        self.api_url = "https://api.trello.com"
-        self.cards_path = "/1/cards"
-        self.boards_path = "/1/boards/"
+        self.api_url = "https://api.trello.com/1"
+        self.cards_path = "/cards"
+        self.boards_path = "/boards"
         self.query_args = {"key": trello_conf.key, "token": trello_conf.token}
 
     def get_board_members(self):
@@ -65,7 +65,7 @@ class TrelloClient:
 
     def post_card(self, payload):
         response: requests.Response = requests.post(
-            self.api_url + "/1/cards", json=payload, params=self.query_args
+            f"{self.api_url}{self.cards_path}", json=payload, params=self.query_args
         )
         response.raise_for_status()
         return response.json()
