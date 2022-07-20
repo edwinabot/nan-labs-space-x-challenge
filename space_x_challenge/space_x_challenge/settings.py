@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,7 +75,6 @@ WSGI_APPLICATION = "space_x_challenge.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
@@ -86,6 +85,11 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
+if (
+    "test" in sys.argv or "test_coverage" in sys.argv
+):  # Covers regular testing and django-coverage
+    DATABASES["default"] = {"ENGINE": "django.db.backends.sqlite3"}
 
 RQ_QUEUES = {"default": {"HOST": "localhost", "PORT": 6379, "DB": 0}}
 
