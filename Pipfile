@@ -9,7 +9,7 @@ djangorestframework = "*"
 django-rq = "*"
 py-trello = "*"
 psycopg2-binary = "*"
-cd = "*"
+requests = "*"
 
 [dev-packages]
 black = "*"
@@ -17,6 +17,7 @@ pytest = "*"
 pylint = "*"
 pylint-django = "*"
 fakeredis = "*"
+requests-mock = "*"
 
 [requires]
 python_version = "3.9.13"

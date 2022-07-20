@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
+import os
 import sys
 from pathlib import Path
 
@@ -133,3 +134,14 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+TRELLO_CONF = {
+    "key": os.getenv("TRELLO_KEY"),
+    "token": os.getenv("TRELLO_TOKEN"),
+    "board_id": os.getenv("BOARD_ID", "5c964efa007d068f5d70116c"),
+    "todo_list_id": os.getenv("BOARD_ID", "5c964f089b7c0644b67bcd16"),
+    "research_label_id": os.getenv("RESEARCH_LABEL_ID", "62d7f8e8ed2bd4296fc93a92"),
+    "test_label_id": os.getenv("TEST_LABEL_ID", "62d7f8ef7069b059fbabcb83"),
+    "maintenance_label_id": os.getenv("MAINTENANCE_LABEL_ID", "62d7f9025e0a2576685ab70e"),
+    "bug_label_id": os.getenv("BUG_LEVEL_ID", "62d82af0ae4ee51caf8bb105")
+}
