@@ -88,7 +88,15 @@ def send_bug(trello_client_conf: dict, instance: Bug):
 
 
 def send_issue(trello_client_conf: dict, instance: Issue):
-    raise NotImplementedError
+    client = TrelloClient(TrelloConf(**trello_client_conf))
+    payload = {
+        "name": instance.title,
+        "desc": instance.description,
+        "idList": client.conf.todo_list_id,
+        "pos": "top",
+    }
+    result = client.post_card(payload)
+    print(f'Created Issue {result["shortUrl"]}')
 
 
 def send_task(trello_client_conf: dict, instance: Task):
