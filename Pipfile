@@ -7,12 +7,16 @@ name = "pypi"
 django = "*"
 djangorestframework = "*"
 django-rq = "*"
+py-trello = "*"
+psycopg2-binary = "*"
+cd = "*"
 
 [dev-packages]
 black = "*"
 pytest = "*"
 pylint = "*"
 pylint-django = "*"
+fakeredis = "*"
 
 [requires]
 python_version = "3.9.13"

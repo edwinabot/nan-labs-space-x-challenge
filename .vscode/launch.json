@@ -21,7 +21,7 @@
             "request": "launch",
             "program": "${workspaceFolder}/space_x_challenge/manage.py",
             "console": "integratedTerminal",
-            "args": ["test", "trello_integration"],
+            "args": ["test", "--noinput", "trello_integration"],
             "justMyCode": true
         }
     ]

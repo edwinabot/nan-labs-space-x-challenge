@@ -1,3 +1,5 @@
+import fakeredis
+from unittest.mock import patch
 from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
@@ -5,6 +7,10 @@ from rest_framework.test import APIClient
 from trello_integration.models import Bug, Issue, Task
 
 
+@patch(
+    "trello_integration.views.IssueDispatcherView.trello_jobs.default_queue.connection",
+    fakeredis.FakeStrictRedis(),
+)
 class BugsTestCase(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
@@ -34,6 +40,10 @@ class BugsTestCase(TestCase):
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
 
+@patch(
+    "trello_integration.views.IssueDispatcherView.trello_jobs.default_queue.connection",
+    fakeredis.FakeStrictRedis(),
+)
 class IssuesTestCase(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
@@ -62,6 +72,10 @@ class IssuesTestCase(TestCase):
         self.assertEqual(status.HTTP_400_BAD_REQUEST, response.status_code)
 
 
+@patch(
+    "trello_integration.views.IssueDispatcherView.trello_jobs.default_queue.connection",
+    fakeredis.FakeStrictRedis(),
+)
 class TaskTestCase(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
